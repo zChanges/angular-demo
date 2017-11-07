@@ -1,0 +1,120 @@
+<nz-card class="m-b-20">
+    <ng-template #title>
+        <nz-tag [nzColor]="'blue'">数据绑定</nz-tag>
+    </ng-template>
+    <ng-template #body>
+        <nz-input [(ngModel)]="inputValue" [nzPlaceHolder]="'输入框哈'" (ngModelChange)="_console($event)"></nz-input>
+        <p>默认值：{{inputValue}}</p>
+        <p>$event：{{event}}</p>
+    </ng-template>
+</nz-card>
+
+
+<nz-card class="m-b-20">
+    <ng-template #title>
+        <nz-tag [nzColor]="'blue'">内置指令</nz-tag>
+    </ng-template>
+    <ng-template #body>
+
+        <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]="2">
+                <label>
+                    <b>ngIf else:</b>
+                </label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]="12">
+                <div *ngIf="false; else elseBlock1">111111111111111</div>
+                <ng-template #elseBlock1>2222</ng-template>
+            </div>
+        </div>
+
+        <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]="2">
+                <label>
+                    <b>ngIf then else:</b>
+                </label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]="12">
+                <div *ngIf="false; then thenBlock else elseBlock2">11</div>
+                <ng-template #thenBlock>22...</ng-template>
+                <ng-template #elseBlock2>33...</ng-template>
+            </div>
+        </div>
+
+        <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]="2">
+                <label>
+                    <b>别名 as:</b>
+                </label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]="12">
+                <div *ngIf="1111 as isShow; else elseBlock">{{isShow}}</div>
+            </div>
+        </div>
+
+        <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]="2">
+                <label>
+                    <b>别名 For as:</b>
+                </label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]="12">
+                <div *ngFor="let item of [9,8,7,6,5]; index as i; trackBy:item">
+                    {{i}} --- {{item}}
+                </div>
+            </div>
+        </div>
+
+        <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]="2">
+                <label>
+                    <b>ngFor trackBy:</b>
+                </label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]="12">
+                <div *ngFor="let item of [1,2,3,4,5]; trackBy: trackByFn">{{item}}</div>
+                <div *ngFor="let item of arrayList; trackBy: item?.val">{{item.text}}</div>
+            </div>
+        </div>
+
+        <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]="2">
+                <label>
+                    <b>ngFor trackBy:</b>
+                </label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]="12">
+                <div [ngStyle]="{'color': 'red'}">ngStyle</div>
+                <div [ngClass]="{bg: true}">ngClass</div>
+            </div>
+        </div>
+
+        <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]="2">
+                <label>
+                    <b>ngSwitch:</b>
+                </label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]="12">
+                <div [ngSwitch]="1">
+                    <div *ngSwitchCase="1">output</div>
+                    <div *ngSwitchDefault>output2</div>
+                </div>
+            </div>
+        </div>
+
+    </ng-template>
+</nz-card>
+
+<nz-card class="m-b-20">
+    <ng-template #title>
+        <nz-tag [nzColor]="'blue'">dom操作</nz-tag>
+    </ng-template>
+    <ng-template #body>
+            <div class="nameClass" id="nameId">我是dom：nameId</div>
+            判断是否包含class'nameClass': {{isContains}}
+            <button nz-button [nzType]="'primary'" (click)="clickChangeClass(!isClass)">
+                <span>点击改变样式</span>
+            </button>
+    </ng-template>
+</nz-card>

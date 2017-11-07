@@ -1,0 +1,25 @@
+<div class="login">
+    <form nz-form [formGroup]="validateForm" class="login-form"> 
+        <div nz-form-item>
+            <div nz-form-control [nzValidateStatus]="validateForm.controls.userName">
+            <nz-input formControlName="userName" [(ngModel)]="userName" [nzPlaceHolder]="'Username'" [nzSize]="'large'">
+                <ng-template #prefix>
+                <i class="anticon anticon-user"></i>
+                </ng-template>
+            </nz-input>
+            </div>
+        </div>
+        <div nz-form-item>
+            <div nz-form-control [nzValidateStatus]="validateForm.controls.passWord">
+            <nz-input formControlName="passWord" [(ngModel)]="passWord" [nzType]="'password'" [nzPlaceHolder]="'Password'" [nzSize]="'large'">
+                <ng-template #prefix>
+                <i class="anticon anticon-lock"></i>
+                </ng-template>
+            </nz-input>
+            </div>
+        </div>
+        <div nz-form-item>
+            <button nz-button class="login-form-button" [disabled]="!validateForm.valid" [nzType]="'primary'" (click)="login()" [nzSize]="'large'">Log in</button>
+        </div>
+    </form>
+</div>
