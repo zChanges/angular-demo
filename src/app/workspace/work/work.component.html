@@ -80,7 +80,7 @@
         <div nz-form-item nz-row>
             <div nz-form-label nz-col [nzSpan]="2">
                 <label>
-                    <b>ngFor trackBy:</b>
+                    <b>ngStyle or ngClass:</b>
                 </label>
             </div>
             <div nz-form-control nz-col [nzSpan]="12">
@@ -118,3 +118,16 @@
             </button>
     </ng-template>
 </nz-card>
+
+<nz-card class="m-b-20">
+    <ng-template #title>
+        <nz-tag [nzColor]="'blue'">生命周期钩子</nz-tag>
+    </ng-template>
+    <ng-template #body>
+           <nz-input [(ngModel)]="changeVal" name="changeVal" [nzPlaceHolder]="'输入查看Docheck or OnChanges 变化'" [nzSize]="'large'"></nz-input>
+           <app-workChild [arrayList]="arrayList" [changeVal]='changeVal'></app-workChild>
+           <button nz-button (click)="clickOnChanges(true)" [nzType]="'primary'" [nzSize]="'small'">点击改变对象属性</button>
+           <button nz-button (click)="clickOnChanges(false)" [nzType]="'primary'" [nzSize]="'small'">点击改变引用</button>
+    </ng-template>
+</nz-card>
+

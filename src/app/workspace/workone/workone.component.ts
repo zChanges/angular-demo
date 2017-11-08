@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./workone.component.scss']
 })
 export class WorkoneComponent implements OnInit {
-
+  name = 'app-workone'
   constructor() { }
 
   ngOnInit() {

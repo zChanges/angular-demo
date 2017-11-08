@@ -7,11 +7,12 @@ import { HeadComponent } from "./head/head.component";
 import { MenuLeftComponent } from "./menu-left/menu-left.component";
 import { NgZorroAntdModule } from "ng-zorro-antd";
 import { WorkoneComponent } from "./workone/workone.component";
+import { WorkChildComponent } from './work/workChild/workChild.component';
 import { FormsModule } from "@angular/forms";
 
 @NgModule({
   imports: [
-    CommonModule,
+  CommonModule,
     WorkspaceRoutes,
     NgZorroAntdModule.forRoot(),
     FormsModule
@@ -21,7 +22,8 @@ import { FormsModule } from "@angular/forms";
     WorkComponent,
     HeadComponent,
     MenuLeftComponent,
-    WorkoneComponent
+    WorkoneComponent,
+    WorkChildComponent
   ]
 })
 export class WorkspaceModule {}

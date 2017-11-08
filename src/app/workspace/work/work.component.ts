@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ElementRef, Renderer2 } from "@angular/core";
+import { workList } from "./workList.model";
 
 @Component({
   selector: "app-work",
@@ -9,7 +10,7 @@ import { ElementRef, Renderer2 } from "@angular/core";
 export class WorkComponent implements OnInit {
   inputValue = "默认值";
   event: string;
-  arrayList = [
+  arrayList: [workList] = [
     { val: "1", text: "aa" },
     { val: "2", text: "bb" },
     { val: "3", text: "cc" },
@@ -18,6 +19,7 @@ export class WorkComponent implements OnInit {
   isContains: boolean;
   nameId: any;
   isClass = false;
+  changeVal: string;
   constructor(private eleRef: ElementRef, private render: Renderer2) {
     const nameClass = this.eleRef.nativeElement.querySelector(".nameClass");
     this.eleRef.nativeElement.querySelector("#nameId");
@@ -35,12 +37,28 @@ export class WorkComponent implements OnInit {
   }
 
   clickChangeClass(isClass) {
-      if(isClass){
-        this.isClass = isClass;
-        this.render.addClass(this.eleRef.nativeElement.querySelector("#nameId"), 'bg');
+    if (isClass) {
+      this.isClass = isClass;
+      this.render.addClass(
+        this.eleRef.nativeElement.querySelector("#nameId"),
+        "bg"
+      );
+    } else {
+      this.isClass = isClass;
+      this.render.removeClass(
+        this.eleRef.nativeElement.querySelector("#nameId"),
+        "bg"
+      );
+    }
+  }
+
+  clickOnChanges(bool) {
+      if(bool){
+        // 改变属性
+        this.arrayList[0].val = '1111';
       }else{
-        this.isClass = isClass;
-        this.render.removeClass(this.eleRef.nativeElement.querySelector("#nameId"), 'bg');
+        // 改变引用
+        this.arrayList = Object.assign([],this.arrayList);
       }
   }
 }
