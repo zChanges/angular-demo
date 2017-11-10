@@ -27,6 +27,16 @@ Backbone(MVC):用户通过事件触发
  4. `ng build` 打包项目（webpack） `--aot` aot编辑
  5. `-- hmr` 热替换
 
+
+### 安装流程
+> 
+1. `node` 安装不用说了
+2. 全局安装`angular-cli` `npm install -g @angular/cli@latest`;
+3. `npm`如果慢可用`cnpm` `npm install -g cnpm --registry=https://registry.npm.taobao.org`;
+4. 用cli新建angular项目 进入需要安装的文件夹后执行`ng new projectName`，会自动用npm安装angular的依赖包，如果觉得慢可以`ctrl + c`退出，到项目文件夹执行`cnpm install`
+5. 启动angular项目 `ng serve` 打开localhost:4200 默认地址；
+
+
 ### 事项
  - 采用Scss创建项目
 
