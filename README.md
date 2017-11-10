@@ -324,7 +324,7 @@ ngOnDestroy()
 通过`service`
 `EventEmitter`
 订阅`Subject` `next`订阅
-**添加订阅后切记在ngOnDestroy什么周期中取消`unsubscribe`订阅**
+**添加订阅后切记在`ngOnDestroy`生命周期中取消`unsubscribe`订阅**
 
 ## 管道pipe
 **内置管道**
