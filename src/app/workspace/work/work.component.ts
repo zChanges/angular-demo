@@ -51,7 +51,7 @@ export class WorkComponent implements OnInit {
     });
   }
 
-  _console(event) {
+  _console(event: string) {
     this.event = JSON.stringify(event);
   }
 
@@ -59,7 +59,7 @@ export class WorkComponent implements OnInit {
     return item;
   }
 
-  clickChangeClass(isClass) {
+  clickChangeClass(isClass: boolean) {
     if (isClass) {
       this.isClass = isClass;
       this.render.addClass(
@@ -75,7 +75,7 @@ export class WorkComponent implements OnInit {
     }
   }
 
-  clickOnChanges(bool) {
+  clickOnChanges(bool: boolean) {
     if (bool) {
       // 改变属性
       this.arrayList[0].val = "1111";
@@ -85,25 +85,23 @@ export class WorkComponent implements OnInit {
     }
   }
 
-  getChildEmitVal($event) {
+  getChildEmitVal($event: string) {
     this.outputVal = $event;
   }
 
-  emitBroadcast(val) {
-    this.workService.$broadcast(val);
+  emitBroadcast(val: string) {
+    this.workService.$broadcast(val)
   }
 
-  emitMeg(val) {
+  emitMeg(val: string) {
     this.workService.sendMessage(val);
   }
 
-  clickSkip(val:boolean) {
-      if(val){
-        this.router.navigate(["/workspace/workTow",{name:'我是路由传过来的值'} ]);
-      }else{
-        this.router.navigateByUrl("/workspace/workTow");
-      }
+  clickSkip(val: boolean) {
+    if (val) {
+      this.router.navigate(["/workspace/workTow", { name: "我是路由传过来的值" }]);
+    } else {
+      this.router.navigateByUrl("/workspace/workTow");
+    }
   }
-
-
 }

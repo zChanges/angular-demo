@@ -14,10 +14,9 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## 架构模式
 MVC -> MVP -> MVVM
-Backbone(MVC):用户通过事件触发
 
 ## angular/cli
-> [angular/cli][1]：angular4脚手架，一键构建angular4项目
+> [angular/cli][1]：angular脚手架，一键构建angular项目
 
 ### 常用指令：
 >`ng help` 查看所有指令
@@ -27,7 +26,6 @@ Backbone(MVC):用户通过事件触发
  4. `ng build` 打包项目（webpack） `--aot` aot编辑
  5. `-- hmr` 热替换
 
-
 ### 安装流程
 > 
 1. `node` 安装不用说了
@@ -35,7 +33,6 @@ Backbone(MVC):用户通过事件触发
 3. `npm`如果慢可用`cnpm` `npm install -g cnpm --registry=https://registry.npm.taobao.org`;
 4. 用cli新建angular项目 进入需要安装的文件夹后执行`ng new projectName`，会自动用npm安装angular的依赖包，如果觉得慢可以`ctrl + c`退出，到项目文件夹执行`cnpm install`
 5. 启动angular项目 `ng serve` 打开localhost:4200 默认地址；
-
 
 ### 事项
  - 采用Scss创建项目
@@ -49,6 +46,56 @@ Backbone(MVC):用户通过事件触发
  $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/_bootstrap';
  ```
+ 
+### **规范**
+**定义变量和函数请申明好类型或interface**
+```
+// workList.model.ts
+export interface workList {
+    /**
+     * val id值
+     */
+    val: string;
+    /**
+     * text 文本值
+     */
+    text: string;
+}
+```
+```typescript
+  import { workList } from "./workList.model";
+      getWorkList(): Promise<workList[]> {
+        return Promise.resolve([
+            { val: "1", text: "aa" },
+            { val: "2", text: "bb" },
+            { val: "3", text: "cc" },
+            { val: "4", text: "dd" }
+          ]);
+      }
+```
+![image_1buijlkj45sn1256q1vala1rdp21.png-120.3kB][2]
+```
+  // 函数 定义申明及解释
+  /**
+   * 发送广播
+   * @param val 广播val值
+   */
+  $broadcast(val: string) {
+    this.broadcast.emit(val);
+  }
+
+  /**
+   * 发送全局消息
+   * @param message 消息值
+   */
+  sendMessage(message: string) {
+    this.subject.next(message);
+  }
+```
+![image_1buik5tdn1t3p11a1ipg14q9l0c3b.png-29.1kB][3]
+
+![image_1buik791hfiq1cnd1g7sivfbua4o.png-17.6kB][4]
+ 
 
 ## 文件目录
 ```
@@ -148,6 +195,7 @@ this.activatedRoute.params.subscribe( res => { console.log(res) });
 html传递：
 <a *ngFor="let item of list"  [routerLink]="['/detail', item.id]" >
 
+<a routerLink="/workspace/workone/id" >标签跳转传值</a>
 route设置：
 { path: 'detail/:id', component: nameComponent }
 ```
@@ -156,8 +204,8 @@ route设置：
 
 ###数据绑定
 **1.单向 数据 -> 视图**
-![image_1bs7i1l4u1rvj1ogee06episaj9.png-0.7kB][2]
-![image_1bs7i3ikb1a5t16op1rsn1bfq19e31j.png-2.2kB][3]
+![image_1bs7i1l4u1rvj1ogee06episaj9.png-0.7kB][5]
+![image_1bs7i3ikb1a5t16op1rsn1bfq19e31j.png-2.2kB][6]
 ```typescript
 {{name}}插入值
 <input [value]='name' [attr.disabled]='isDisabled'/>
@@ -166,7 +214,7 @@ route设置：
 ```
 
 **2.单向 视图 -> 数据(事件)**
-![image_1bs7io6vnqlk12tp1f6o18deg5n2d.png-32.2kB][4]
+![image_1bs7io6vnqlk12tp1f6o18deg5n2d.png-32.2kB][7]
 ```typescript
 <input 
   (keyup)="clickMe($event,'keyup')" 
@@ -230,7 +278,7 @@ route设置：
 ```
 
 ## dom操作
->**[ElementRef][5]：** 获取dom
+>**[ElementRef][8]：** 获取dom
 ```typescript
 // html
 <div class="nameClass" id="nameId"></div>
@@ -241,7 +289,7 @@ const nameClass = this.eleRef.nativeElement.querySelector('.nameClass');
 this.eleRef.nativeElement.querySelector('#nameId');
 this.elementRef.nativeElement.contains(nameClass)
 ```
->**[Renderer2][6]** 渲染器
+>**[Renderer2][9]** 渲染器
 用来创建元素、文本、设置属性、添加样式和设置事件监听…………
 ```
  changeHostState() {
@@ -254,8 +302,8 @@ this.elementRef.nativeElement.contains(nameClass)
 ```
 
 ## 拦截器及服务(httpClient)
-查看[taskInterceptor.service.ts][7]
-和[app.module.ts][8]
+查看[taskInterceptor.service.ts][10]
+和[app.module.ts][11]
 
 ## 生命周期钩子
 ```
@@ -311,23 +359,23 @@ export class DateAppendzeroPipe implements PipeTransform {
 ```
 
 ## 依赖注入（DI）
-[依赖注入][9]
+[依赖注入][12]
 ## AOT(预编译) or JIT(即时编辑)编译
 - JIT：先tsc编译成js文件，打包压缩，浏览器加载代码，启动angular，通过JIT编译处理代码，然后再渲染应用。
 
 - AOT: 在服务端预先编译好所有文件，浏览器直接加载代码运行，直接渲染应用，不同等编译后再运行渲染，打包文件中也不需要angular编译器，编译器都就占angular自身大小的一半。预先编译的话会预先检测模版绑定的一些错误。
 
 JIT：
-![image_1bs2sgej6ll91nrq1g5hrs915v11t.png-36.6kB][10]
-![image_1bs2shhs91jd7sds1heam0l4uu2a.png-16.9kB][11]
+![image_1bs2sgej6ll91nrq1g5hrs915v11t.png-36.6kB][13]
+![image_1bs2shhs91jd7sds1heam0l4uu2a.png-16.9kB][14]
 
 AOT：
-![image_1bs2s9qcr1kcr1fif1o09d5611r41g.png-35.6kB][12]
-![image_1bs2s9b7618p61ndioeb2l64hs13.png-12.4kB][13]
+![image_1bs2s9qcr1kcr1fif1o09d5611r41g.png-35.6kB][15]
+![image_1bs2s9b7618p61ndioeb2l64hs13.png-12.4kB][16]
 
 ## HMR(热替换)
 >HMR: `ng serve --hmr`;
-![hmr.gif-543.5kB][14]
+![hmr.gif-543.5kB][17]
 **安装HMR**
 ```
 npm install @angularclass/hmr -D 
@@ -365,18 +413,22 @@ npm install rimraf -g
 rimraf node_modules
 ```
 
+
   [1]: https://github.com/angular/angular-cli
-  [2]: http://static.zybuluo.com/zChange/k5x9nqripyoovmxkt7iz6f7j/image_1bs7i1l4u1rvj1ogee06episaj9.png
-  [3]: http://static.zybuluo.com/zChange/clrdh8rww47yt73kkq067rzl/image_1bs7i3ikb1a5t16op1rsn1bfq19e31j.png
-  [4]: http://static.zybuluo.com/zChange/h4s3uthem180sz7tnfspoo11/image_1bs7io6vnqlk12tp1f6o18deg5n2d.png
-  [5]: https://angular.io/api/core/ElementRef
-  [6]: https://angular.io/api/core/Renderer2#overview
-  [7]: https://github.com/zChanges/wenyunTask/blob/master/src/app/taskInterceptor.service.ts
-  [8]: https://github.com/zChanges/wenyunTask/blob/master/src/app/app.module.ts
-  [9]: https://www.angular.cn/guide/dependency-injection
-  [10]: http://static.zybuluo.com/zChange/o5dtt0jfezc5627n4z7nk0z7/image_1bs2sgej6ll91nrq1g5hrs915v11t.png
-  [11]: http://static.zybuluo.com/zChange/80afnmo0dm36gu9gzk97l8fj/image_1bs2shhs91jd7sds1heam0l4uu2a.png
-  [12]: http://static.zybuluo.com/zChange/m2ti57tqqeb5izg1s6xp5rw2/image_1bs2s9qcr1kcr1fif1o09d5611r41g.png
-  [13]: http://static.zybuluo.com/zChange/c0nvnaffu08rk73ki4tdfdiz/image_1bs2s9b7618p61ndioeb2l64hs13.png
-  [14]: http://static.zybuluo.com/zChange/zbg9ktbs7o6v6lh3kadvj6hp/hmr.gif
+  [2]: http://static.zybuluo.com/zChange/kubziul1zbivuuo37pu891vw/image_1buijlkj45sn1256q1vala1rdp21.png
+  [3]: http://static.zybuluo.com/zChange/u3iwmuaagadkqefoph4vk9al/image_1buik5tdn1t3p11a1ipg14q9l0c3b.png
+  [4]: http://static.zybuluo.com/zChange/20twp6m19a6a91xyeie24rg8/image_1buik791hfiq1cnd1g7sivfbua4o.png
+  [5]: http://static.zybuluo.com/zChange/k5x9nqripyoovmxkt7iz6f7j/image_1bs7i1l4u1rvj1ogee06episaj9.png
+  [6]: http://static.zybuluo.com/zChange/clrdh8rww47yt73kkq067rzl/image_1bs7i3ikb1a5t16op1rsn1bfq19e31j.png
+  [7]: http://static.zybuluo.com/zChange/h4s3uthem180sz7tnfspoo11/image_1bs7io6vnqlk12tp1f6o18deg5n2d.png
+  [8]: https://angular.io/api/core/ElementRef
+  [9]: https://angular.io/api/core/Renderer2#overview
+  [10]: https://github.com/zChanges/wenyunTask/blob/master/src/app/taskInterceptor.service.ts
+  [11]: https://github.com/zChanges/wenyunTask/blob/master/src/app/app.module.ts
+  [12]: https://www.angular.cn/guide/dependency-injection
+  [13]: http://static.zybuluo.com/zChange/o5dtt0jfezc5627n4z7nk0z7/image_1bs2sgej6ll91nrq1g5hrs915v11t.png
+  [14]: http://static.zybuluo.com/zChange/80afnmo0dm36gu9gzk97l8fj/image_1bs2shhs91jd7sds1heam0l4uu2a.png
+  [15]: http://static.zybuluo.com/zChange/m2ti57tqqeb5izg1s6xp5rw2/image_1bs2s9qcr1kcr1fif1o09d5611r41g.png
+  [16]: http://static.zybuluo.com/zChange/c0nvnaffu08rk73ki4tdfdiz/image_1bs2s9b7618p61ndioeb2l64hs13.png
+  [17]: http://static.zybuluo.com/zChange/zbg9ktbs7o6v6lh3kadvj6hp/hmr.gif
 

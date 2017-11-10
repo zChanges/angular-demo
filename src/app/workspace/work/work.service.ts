@@ -14,11 +14,18 @@ export class WorkService {
   constructor() {
   }
 
+  /**
+   * 发送广播
+   * @param val 广播val值
+   */
   $broadcast(val: string) {
     this.broadcast.emit(val);
   }
 
-  // 发送消息
+  /**
+   * 发送全局消息
+   * @param message 消息值
+   */
   sendMessage(message: string) {
     this.subject.next(message);
   }
