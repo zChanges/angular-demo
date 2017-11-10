@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { ElementRef, Renderer2 } from "@angular/core";
 import { workList } from "./workList.model";
 import { WorkService } from "./work.service";
@@ -9,7 +9,7 @@ import { Router, Params } from "@angular/router";
   templateUrl: "./work.component.html",
   styleUrls: ["./work.component.scss"]
 })
-export class WorkComponent implements OnInit {
+export class WorkComponent implements OnInit, OnDestroy {
   inputValue = "默认值";
   event: string;
   arrayList: Array<workList>;
@@ -20,6 +20,9 @@ export class WorkComponent implements OnInit {
   outputVal: string;
   broadcastVal: string;
   SubjectVal: string;
+
+  subBroadcast: any;
+  subMesssage: any;
 
   constructor(
     private eleRef: ElementRef,
@@ -39,13 +42,13 @@ export class WorkComponent implements OnInit {
     });
 
     // 订阅广播
-    this.workService.broadcast.subscribe(val => {
+    this.subBroadcast = this.workService.broadcast.subscribe(val => {
       console.log(`%c ${val}`, "color:red;");
       this._notification.create("success", "全局广播", val);
     });
 
     // 订阅消息
-    this.workService.getMessage().subscribe(val => {
+    this.subMesssage = this.workService.getMessage().subscribe(val => {
       console.log(`%c subject:${val}`, "color:red;");
       this._notification.create("success", "subJect发送消息", val);
     });
@@ -90,7 +93,7 @@ export class WorkComponent implements OnInit {
   }
 
   emitBroadcast(val: string) {
-    this.workService.$broadcast(val)
+    this.workService.$broadcast(val);
   }
 
   emitMeg(val: string) {
@@ -103,5 +106,12 @@ export class WorkComponent implements OnInit {
     } else {
       this.router.navigateByUrl("/workspace/workTow");
     }
+  }
+
+  ngOnDestroy() {
+    // 订阅后请取消订阅： 不取消会产生多次监听，方法就会执行多次
+    // 欲看效果请注释下面代码，换其他页面再返回来发送消息后，会触发出现多次消息提醒
+    this.subBroadcast.unsubscribe();
+    this.subMesssage.unsubscribe();
   }
 }
