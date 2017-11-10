@@ -135,7 +135,6 @@ const routes: Routes = [
 ```
 传递：
 import { Router} from '@angular/router';
-this.Router.navigate(["地址",id(单个)])
 this.Router.navigate(["地址",{id:id,name:name}(多个)])
 ```
 

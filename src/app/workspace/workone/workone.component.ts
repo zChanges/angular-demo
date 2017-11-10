@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-workone',
   templateUrl: './workone.component.html',
@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorkoneComponent implements OnInit {
   name = 'app-workone'
-  constructor() { }
+  workerArgument: string;
+  constructor(private activatedRoute: ActivatedRoute  ) { }
 
   ngOnInit() {
+    this.activatedRoute.params.subscribe( val => { 
+        this.workerArgument = val.name;
+    });
   }
 
 }

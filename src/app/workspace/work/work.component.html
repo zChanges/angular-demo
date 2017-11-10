@@ -3,10 +3,15 @@
     <nz-tag [nzColor]="'blue'">路由传参</nz-tag>
   </ng-template>
   <ng-template #body>
-    <button nz-button (click)="clickSkip()" [nzType]="'primary'" [nzSize]="'small'"></button>
-    
-  </ng-template>
+      <ng-container *ngFor="let item of [{name:'for循环中传name',val:'文本（for循环中传值)'}]">
+        <a [routerLink]="['/workspace/workone',item.name]">{{item.val}}</a>
+      </ng-container>
+    <a routerLink="/workspace/workone/'标签传的值'" >标签跳转传值</a>
+    <button nz-button (click)="clickSkip(true)" [nzType]="'primary'" [nzSize]="'small'">点击跳转传值</button>
+    <button nz-button (click)="clickSkip(false)" [nzType]="'primary'" [nzSize]="'small'">点击跳转不传值</button>
+</ng-template>
 </nz-card>
+
 
 
 <nz-card class="m-b-20">

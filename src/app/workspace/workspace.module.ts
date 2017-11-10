@@ -16,7 +16,8 @@ import { WorkspaceRoutes } from "./workspace.routing";
 
 // serivce
 import { WorkService } from "./work/work.service";
-import { WorkpipePipe } from './workpipe.pipe';
+import { WorkpipePipe } from "./workpipe.pipe";
+import { WorkTowComponent } from "./workTow/workTow.component";
 
 @NgModule({
   imports: [
@@ -33,8 +34,9 @@ import { WorkpipePipe } from './workpipe.pipe';
     WorkoneComponent,
     WorkChildComponent,
     WorkCommunicationComponent,
-    WorkpipePipe
-],
+    WorkpipePipe,
+    WorkTowComponent
+  ],
   providers: [WorkService]
 })
 export class WorkspaceModule {}

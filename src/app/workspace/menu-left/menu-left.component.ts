@@ -9,7 +9,8 @@ export class MenuLeftComponent implements OnInit {
   isOpenOne = false;
   routList = [
     { route: "work", name: "work" },
-    { route: "workone", name: "workone" }
+    { route: "workone/:name", name: "workone" },
+    { route: "workTow", name: "workTow" }
   ];
   constructor() {}
 

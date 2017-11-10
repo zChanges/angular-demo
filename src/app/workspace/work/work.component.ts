@@ -3,6 +3,7 @@ import { ElementRef, Renderer2 } from "@angular/core";
 import { workList } from "./workList.model";
 import { WorkService } from "./work.service";
 import { NzNotificationService } from "ng-zorro-antd";
+import { Router, Params } from "@angular/router";
 @Component({
   selector: "app-work",
   templateUrl: "./work.component.html",
@@ -24,7 +25,8 @@ export class WorkComponent implements OnInit {
     private eleRef: ElementRef,
     private render: Renderer2,
     private workService: WorkService,
-    private _notification: NzNotificationService
+    private _notification: NzNotificationService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -46,7 +48,7 @@ export class WorkComponent implements OnInit {
     this.workService.getMessage().subscribe(val => {
       console.log(`%c subject:${val}`, "color:red;");
       this._notification.create("success", "subJect发送消息", val);
-    })
+    });
   }
 
   _console(event) {
@@ -91,10 +93,17 @@ export class WorkComponent implements OnInit {
     this.workService.$broadcast(val);
   }
 
-
-  emitMeg(val){
-    this.workService.sendMessage(val)
+  emitMeg(val) {
+    this.workService.sendMessage(val);
   }
 
-  
+  clickSkip(val:boolean) {
+      if(val){
+        this.router.navigate(["/workspace/workTow",{name:'我是路由传过来的值'} ]);
+      }else{
+        this.router.navigateByUrl("/workspace/workTow");
+      }
+  }
+
+
 }
