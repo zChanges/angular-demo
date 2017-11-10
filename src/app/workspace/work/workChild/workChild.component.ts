@@ -35,7 +35,7 @@ export class WorkChildComponent
   onInitVal: any;
 
   constructor() {
-    this.constructorVal = this.arrayList;
+    this.constructorVal = JSON.stringify(this.arrayList);
     log(`constructor:${this.constructorVal}`);
   }
 
@@ -47,7 +47,7 @@ export class WorkChildComponent
 
   ngOnInit() {
     // 初始化的时候
-    this.onInitVal = this.arrayList;
+    this.onInitVal = JSON.stringify(this.arrayList);
     log(`ngOnInit:${this.onInitVal}`);
   }
 
@@ -63,19 +63,22 @@ export class WorkChildComponent
   }
 
   ngAfterContentChecked() {
-    //组建
-    log("ngAfterContentChecked");
+    //组件被检测
+    // log("ngAfterContentChecked");
   }
 
   ngAfterViewInit() {
+    // 视图初始化
     log(`ngAfterViewInit`);
   }
 
   ngAfterViewChecked() {
-    log(`ngAfterViewChecked`);
+    // 视图被检测
+    // log(`ngAfterViewChecked`);
   }
 
   ngOnDestroy() {
+    // 组件被销毁
     console.log(`%c ngOnDestroy：组件被销毁了`, "color: red");
   }
 }

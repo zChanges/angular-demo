@@ -1,133 +1,223 @@
 <nz-card class="m-b-20">
-    <ng-template #title>
-        <nz-tag [nzColor]="'blue'">数据绑定</nz-tag>
-    </ng-template>
-    <ng-template #body>
-        <nz-input [(ngModel)]="inputValue" [nzPlaceHolder]="'输入框哈'" (ngModelChange)="_console($event)"></nz-input>
-        <p>默认值：{{inputValue}}</p>
-        <p>$event：{{event}}</p>
-    </ng-template>
+  <ng-template #title>
+    <nz-tag [nzColor]="'blue'">路由传参</nz-tag>
+  </ng-template>
+  <ng-template #body>
+    <button nz-button (click)="clickSkip()" [nzType]="'primary'" [nzSize]="'small'"></button>
+    
+  </ng-template>
 </nz-card>
 
 
 <nz-card class="m-b-20">
-    <ng-template #title>
-        <nz-tag [nzColor]="'blue'">内置指令</nz-tag>
-    </ng-template>
-    <ng-template #body>
+  <ng-template #title>
+    <nz-tag [nzColor]="'blue'">数据绑定</nz-tag>
+  </ng-template>
+  <ng-template #body>
+    <nz-input [(ngModel)]="inputValue" [nzPlaceHolder]="'输入框哈'" (ngModelChange)="_console($event)"></nz-input>
+    <p>默认值：{{inputValue}}</p>
+    <p>$event：{{event}}</p>
+  </ng-template>
+</nz-card>
 
-        <div nz-form-item nz-row>
-            <div nz-form-label nz-col [nzSpan]="2">
-                <label>
-                    <b>ngIf else:</b>
-                </label>
-            </div>
-            <div nz-form-control nz-col [nzSpan]="12">
-                <div *ngIf="false; else elseBlock1">111111111111111</div>
-                <ng-template #elseBlock1>2222</ng-template>
-            </div>
+
+<nz-card class="m-b-20">
+  <ng-template #title>
+    <nz-tag [nzColor]="'blue'">内置指令</nz-tag>
+  </ng-template>
+  <ng-template #body>
+
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSpan]="2">
+        <label>
+          <b>ngIf else:</b>
+        </label>
+      </div>
+      <div nz-form-control nz-col [nzSpan]="12">
+        <div *ngIf="false; else elseBlock1">111111111111111</div>
+        <ng-template #elseBlock1>2222</ng-template>
+      </div>
+    </div>
+
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSpan]="2">
+        <label>
+          <b>ngIf then else:</b>
+        </label>
+      </div>
+      <div nz-form-control nz-col [nzSpan]="12">
+        <div *ngIf="false; then thenBlock else elseBlock2">11</div>
+        <ng-template #thenBlock>22...</ng-template>
+        <ng-template #elseBlock2>33...</ng-template>
+      </div>
+    </div>
+
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSpan]="2">
+        <label>
+          <b>别名 as:</b>
+        </label>
+      </div>
+      <div nz-form-control nz-col [nzSpan]="12">
+        <div *ngIf="1111 as isShow; else elseBlock">{{isShow}}</div>
+      </div>
+    </div>
+
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSpan]="2">
+        <label>
+          <b>别名 For as:</b>
+        </label>
+      </div>
+      <div nz-form-control nz-col [nzSpan]="12">
+        <div *ngFor="let item of [9,8,7,6,5]; index as i; trackBy:item">
+          {{i}} --- {{item}}
         </div>
+      </div>
+    </div>
 
-        <div nz-form-item nz-row>
-            <div nz-form-label nz-col [nzSpan]="2">
-                <label>
-                    <b>ngIf then else:</b>
-                </label>
-            </div>
-            <div nz-form-control nz-col [nzSpan]="12">
-                <div *ngIf="false; then thenBlock else elseBlock2">11</div>
-                <ng-template #thenBlock>22...</ng-template>
-                <ng-template #elseBlock2>33...</ng-template>
-            </div>
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSpan]="2">
+        <label>
+          <b>ngFor trackBy:</b>
+        </label>
+      </div>
+      <div nz-form-control nz-col [nzSpan]="12">
+        <div *ngFor="let item of [1,2,3,4,5]; trackBy: trackByFn">{{item}}</div>
+        <div *ngFor="let item of arrayList; trackBy: item?.val">{{item.text}}</div>
+      </div>
+    </div>
+
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSpan]="2">
+        <label>
+          <b>ngStyle or ngClass:</b>
+        </label>
+      </div>
+      <div nz-form-control nz-col [nzSpan]="12">
+        <div [ngStyle]="{'color': 'red'}">ngStyle</div>
+        <div [ngClass]="{bg: true}">ngClass</div>
+      </div>
+    </div>
+
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSpan]="2">
+        <label>
+          <b>ngSwitch:</b>
+        </label>
+      </div>
+      <div nz-form-control nz-col [nzSpan]="12">
+        <div [ngSwitch]="1">
+          <div *ngSwitchCase="1">output</div>
+          <div *ngSwitchDefault>output2</div>
         </div>
+      </div>
+    </div>
 
-        <div nz-form-item nz-row>
-            <div nz-form-label nz-col [nzSpan]="2">
-                <label>
-                    <b>别名 as:</b>
-                </label>
-            </div>
-            <div nz-form-control nz-col [nzSpan]="12">
-                <div *ngIf="1111 as isShow; else elseBlock">{{isShow}}</div>
-            </div>
-        </div>
-
-        <div nz-form-item nz-row>
-            <div nz-form-label nz-col [nzSpan]="2">
-                <label>
-                    <b>别名 For as:</b>
-                </label>
-            </div>
-            <div nz-form-control nz-col [nzSpan]="12">
-                <div *ngFor="let item of [9,8,7,6,5]; index as i; trackBy:item">
-                    {{i}} --- {{item}}
-                </div>
-            </div>
-        </div>
-
-        <div nz-form-item nz-row>
-            <div nz-form-label nz-col [nzSpan]="2">
-                <label>
-                    <b>ngFor trackBy:</b>
-                </label>
-            </div>
-            <div nz-form-control nz-col [nzSpan]="12">
-                <div *ngFor="let item of [1,2,3,4,5]; trackBy: trackByFn">{{item}}</div>
-                <div *ngFor="let item of arrayList; trackBy: item?.val">{{item.text}}</div>
-            </div>
-        </div>
-
-        <div nz-form-item nz-row>
-            <div nz-form-label nz-col [nzSpan]="2">
-                <label>
-                    <b>ngStyle or ngClass:</b>
-                </label>
-            </div>
-            <div nz-form-control nz-col [nzSpan]="12">
-                <div [ngStyle]="{'color': 'red'}">ngStyle</div>
-                <div [ngClass]="{bg: true}">ngClass</div>
-            </div>
-        </div>
-
-        <div nz-form-item nz-row>
-            <div nz-form-label nz-col [nzSpan]="2">
-                <label>
-                    <b>ngSwitch:</b>
-                </label>
-            </div>
-            <div nz-form-control nz-col [nzSpan]="12">
-                <div [ngSwitch]="1">
-                    <div *ngSwitchCase="1">output</div>
-                    <div *ngSwitchDefault>output2</div>
-                </div>
-            </div>
-        </div>
-
-    </ng-template>
+  </ng-template>
 </nz-card>
 
 <nz-card class="m-b-20">
-    <ng-template #title>
-        <nz-tag [nzColor]="'blue'">dom操作</nz-tag>
-    </ng-template>
-    <ng-template #body>
-            <div class="nameClass" id="nameId">我是dom：nameId</div>
-            判断是否包含class'nameClass': {{isContains}}
-            <button nz-button [nzType]="'primary'" (click)="clickChangeClass(!isClass)">
-                <span>点击改变样式</span>
-            </button>
-    </ng-template>
+  <ng-template #title>
+    <nz-tag [nzColor]="'blue'">dom操作</nz-tag>
+  </ng-template>
+  <ng-template #body>
+    <div class="nameClass" id="nameId">我是dom：nameId</div>
+    判断是否包含class'nameClass': {{isContains}}
+    <button nz-button [nzType]="'primary'" (click)="clickChangeClass(!isClass)">
+      <span>点击改变样式</span>
+    </button>
+  </ng-template>
 </nz-card>
 
 <nz-card class="m-b-20">
-    <ng-template #title>
-        <nz-tag [nzColor]="'blue'">生命周期钩子</nz-tag>
-    </ng-template>
-    <ng-template #body>
-           <nz-input [(ngModel)]="changeVal" name="changeVal" [nzPlaceHolder]="'输入查看Docheck or OnChanges 变化'" [nzSize]="'large'"></nz-input>
-           <app-workChild [arrayList]="arrayList" [changeVal]='changeVal'></app-workChild>
-           <button nz-button (click)="clickOnChanges(true)" [nzType]="'primary'" [nzSize]="'small'">点击改变对象属性</button>
-           <button nz-button (click)="clickOnChanges(false)" [nzType]="'primary'" [nzSize]="'small'">点击改变引用</button>
-    </ng-template>
+  <ng-template #title>
+    <nz-tag [nzColor]="'blue'">生命周期钩子</nz-tag>
+  </ng-template>
+  <ng-template #body>
+    <nz-input [(ngModel)]="changeVal" name="changeVal" [nzPlaceHolder]="'输入查看Docheck or OnChanges 变化'" [nzSize]="'large'"></nz-input>
+    <app-workChild [arrayList]="arrayList" [changeVal]='changeVal'></app-workChild>
+    <button nz-button (click)="clickOnChanges(true)" [nzType]="'primary'" [nzSize]="'small'">点击改变对象属性</button>
+    <button nz-button (click)="clickOnChanges(false)" [nzType]="'primary'" [nzSize]="'small'">点击改变引用</button>
+  </ng-template>
 </nz-card>
 
+
+<nz-card class="m-b-20">
+  <ng-template #title>
+    <nz-tag [nzColor]="'blue'">组件之间的通讯</nz-tag>
+  </ng-template>
+  <ng-template #body>
+    <div nz-form-label nz-col [nzSpan]="2">
+      <label>
+        <b>@Input父->子:</b>
+      </label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="22">
+      <app-workCommunication (emitParentVal)="getChildEmitVal($event)" [parentName]="'@Input 父->子通讯的值'"></app-workCommunication>
+    </div>
+
+    <div nz-form-label nz-col [nzSpan]="2">
+      <label>
+        <b>@Input子->父:</b>
+      </label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="22">
+      @output值:{{outputVal}}
+    </div>
+
+    <div nz-form-label nz-col [nzSpan]="2">
+      <label>
+        <b>EventEmitter全局广播:</b>
+      </label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="22">
+      <nz-input [(ngModel)]="broadcastVal" name="broadcastVal" [nzPlaceHolder]="'输入需提示的文字'" [nzSize]="'large'"></nz-input>
+      <button nz-button (click)="emitBroadcast(broadcastVal|| '默认值:发送广播成功！')" [nzType]="'primary'" [nzSize]="'small'">点击发送全局广播</button>
+    </div>
+
+
+    <div nz-form-label nz-col [nzSpan]="2">
+      <label>
+        <b>Subject发送消息:</b>
+      </label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="22">
+      <nz-input [(ngModel)]="SubjectVal" name="SubjectVal" [nzPlaceHolder]="'输入需发送的消息'" [nzSize]="'large'"></nz-input>
+      <button nz-button (click)="emitMeg(SubjectVal|| '默认值:发送消息成功！')" [nzType]="'primary'" [nzSize]="'small'">点击发送全局广播</button>
+    </div>
+  </ng-template>
+</nz-card>
+
+<nz-card class="m-b-20">
+  <ng-template #title>
+    <nz-tag [nzColor]="'blue'">pipe管道</nz-tag>
+  </ng-template>
+  <ng-template #body>
+    <div nz-form-label nz-col [nzSpan]="2">
+      <label>
+        <b>内置管道:</b>
+      </label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="22">
+      <div>{{1507793573000 | date: 'y-MM-dd HH:mm:ss'}}</div>
+      <div>{{ '1507794154000000' | slice:0:13 | date:'y-MM-dd HH:mm:ss'}}</div>
+      <div>{{'zzz' | uppercase }}</div>
+      <div>{{'ZZZsS' | lowercase }}</div>
+      <div>{{ 3.14159265 | number: '1.4-4' }}</div>
+      <div>{{ { name: 'semlinker' } | json }}</div>
+    </div>
+
+    <div nz-form-label nz-col [nzSpan]="2">
+      <label>
+        <b>自定义管道:</b>
+      </label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="22">
+      <p>原值:1507794154</p>
+      <p>加入管道后的值:{{'1507794154' | workpipe}}</p>
+      <p>多管道：{{ '1507794154' | workpipe | date:'y-MM-dd HH:mm:ss' }}</p>
+    </div>
+
+  </ng-template>
+</nz-card>

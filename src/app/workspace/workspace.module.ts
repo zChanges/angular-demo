@@ -1,29 +1,40 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { NgZorroAntdModule } from "ng-zorro-antd";
+
+// component
 import { WorkspaceComponent } from "./workspace.component";
 import { WorkComponent } from "./work/work.component";
-import { WorkspaceRoutes } from "./workspace.routing";
 import { HeadComponent } from "./head/head.component";
 import { MenuLeftComponent } from "./menu-left/menu-left.component";
-import { NgZorroAntdModule } from "ng-zorro-antd";
 import { WorkoneComponent } from "./workone/workone.component";
-import { WorkChildComponent } from './work/workChild/workChild.component';
-import { FormsModule } from "@angular/forms";
+import { WorkChildComponent } from "./work/workChild/workChild.component";
+import { WorkCommunicationComponent } from "./work/workCommunication/workCommunication.component";
+// routs
+import { WorkspaceRoutes } from "./workspace.routing";
+
+// serivce
+import { WorkService } from "./work/work.service";
+import { WorkpipePipe } from './workpipe.pipe';
 
 @NgModule({
   imports: [
-  CommonModule,
+    CommonModule,
     WorkspaceRoutes,
     NgZorroAntdModule.forRoot(),
     FormsModule
   ],
   declarations: [
-    WorkspaceComponent, 
+    WorkspaceComponent,
     WorkComponent,
     HeadComponent,
     MenuLeftComponent,
     WorkoneComponent,
-    WorkChildComponent
-  ]
+    WorkChildComponent,
+    WorkCommunicationComponent,
+    WorkpipePipe
+],
+  providers: [WorkService]
 })
 export class WorkspaceModule {}

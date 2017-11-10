@@ -26,6 +26,7 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
       FormsModule,
       ReactiveFormsModule,
       NgZorroAntdModule.forRoot(),
+      HttpModule
     ],
   providers: [],
   bootstrap: [AppComponent]
