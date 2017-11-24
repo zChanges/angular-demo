@@ -5,7 +5,6 @@ import { Subject } from "rxjs/Subject";
 import { Http } from "@angular/http";
 import "rxjs/add/operator/map";
 import * as workJson from "../workList.json";
-import { Params } from "../../../../node_modules/._@angular_router@5.0.0@@angular/router/src/shared";
 @Injectable()
 export class WorkService {
   broadcast: EventEmitter<any> = new EventEmitter();
