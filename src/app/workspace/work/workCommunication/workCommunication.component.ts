@@ -1,9 +1,9 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: "app-workCommunication",
-  templateUrl: "./workCommunication.component.html",
-  styleUrls: ["./workCommunication.component.scss"]
+  selector: 'app-workCommunication',
+  templateUrl: './workCommunication.component.html',
+  styleUrls: ['./workCommunication.component.scss']
 })
 export class WorkCommunicationComponent {
   @Input() parentName: string;
@@ -13,6 +13,4 @@ export class WorkCommunicationComponent {
   emitParentFn() {
     this.emitParentVal.emit('@output子->父通讯的值');
   }
-
 }
-

@@ -6,14 +6,13 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./workone.component.scss']
 })
 export class WorkoneComponent implements OnInit {
-  name = 'app-workone'
+  name = 'app-workone';
   workerArgument: string;
-  constructor(private activatedRoute: ActivatedRoute  ) { }
+  constructor(private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe( val => { 
-        this.workerArgument = val.name;
+    this.activatedRoute.params.subscribe(val => {
+      this.workerArgument = val.name;
     });
   }
-
 }
