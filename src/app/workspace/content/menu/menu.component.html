@@ -1,0 +1,30 @@
+<ng-container *ngFor="let item of menus">
+    <li *ngIf="item.subs" nz-submenu>
+        <span title>
+            <i *ngIf="item.icon" class="anticon {{item.icon}}"></i>
+            <span  class="nav-text">
+                {{item.title}}
+            </span>
+        </span>
+        <ul>
+            <ng-container *ngFor="let sub of item.subs">
+                <li  nz-menu-item 
+                    [routerLink]='sub.route'
+                    routerLinkActive="active"
+                    >
+                    {{sub.title}}
+                </li>
+            </ng-container>
+        </ul>
+    </li>
+
+    <li *ngIf="!item.subs"  nz-menu-item  [routerLink]='item.route' routerLinkActive="active">
+        <span title>
+            <i *ngIf="item.icon" class="anticon {{item.icon}}"></i>
+            <span  class="nav-text">
+                {{item.title}}
+            </span>
+        </span>
+    </li>
+
+</ng-container>

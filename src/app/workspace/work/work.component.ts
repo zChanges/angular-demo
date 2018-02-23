@@ -102,9 +102,9 @@ export class WorkComponent implements OnInit, OnDestroy {
 
   clickSkip(val: boolean) {
     if (val) {
-      this.router.navigate(["/workspace/workTow", { name: "我是路由传过来的值" }]);
+      this.router.navigate(["/workspace/workModule/workTow", { name: "我是路由传过来的值" }]);
     } else {
-      this.router.navigateByUrl("/workspace/workTow");
+      this.router.navigateByUrl("/workspace/workModule/workTow");
     }
   }
 

@@ -1,0 +1,13 @@
+<div style="height:500px;">
+    <ngx-charts-pie-chart
+    [scheme]="colorScheme"
+    [results]="single"
+    [legend]="showLegend"
+    [explodeSlices]="explodeSlices"
+    [labels]="showLabels"
+    [doughnut]="doughnut"
+    [gradient]="gradient"
+    (select)="onSelect($event)">
+    </ngx-charts-pie-chart>
+</div>
+

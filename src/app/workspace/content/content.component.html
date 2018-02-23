@@ -1,0 +1,13 @@
+<nz-layout>
+    <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed">
+        <ul nz-menu style="min-height: 90vh;" [nzMode]="isCollapsed?'vertical':'inline'">
+            <app-menu [menus]="routList"></app-menu>
+        </ul>
+    </nz-sider>
+
+    <nz-layout style="margin:0 16px;">
+            <nz-content style="padding:24px; background: #fff; min-height: 360px;">
+                <router-outlet></router-outlet>
+            </nz-content>
+    </nz-layout>
+</nz-layout>

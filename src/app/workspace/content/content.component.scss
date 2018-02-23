@@ -1,0 +1,16 @@
+:host ::ng-deep .ant-layout-sider-collapsed .nav-text {
+    display: none;
+}
+  
+:host ::ng-deep .ant-layout-sider-collapsed .ant-menu-submenu-title:after {
+    display: none;
+}
+
+:host ::ng-deep .ant-layout-sider-collapsed .anticon {
+    margin-left: 8px;
+}
+
+:host ::ng-deep .ant-layout-sider-trigger{
+    background: #fff !important;
+    color: #404040 !important;
+}

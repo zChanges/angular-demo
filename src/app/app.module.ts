@@ -7,15 +7,11 @@ import { HttpModule } from '@angular/http';
 // Component
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-
 // Router
 import { RouterRoutes } from './router.routing';
-
 // ui组件库
 import { NgZorroAntdModule } from 'ng-zorro-antd';
-// import { QuillEditorModule } from 'ngx-quill-editor';
-import { QuillModule } from 'ngx-quill';
-
+// 图片放大
 import { NgzLightboxModule } from 'ngz-lightbox';
 
 @NgModule({
@@ -26,9 +22,8 @@ import { NgzLightboxModule } from 'ngz-lightbox';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    NgZorroAntdModule.forRoot(),
+    NgZorroAntdModule,
     HttpModule,
-    QuillModule,
     NgzLightboxModule
   ],
   providers: [],
