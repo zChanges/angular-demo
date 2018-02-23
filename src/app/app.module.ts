@@ -16,6 +16,8 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
 // import { QuillEditorModule } from 'ngx-quill-editor';
 import { QuillModule } from 'ngx-quill';
 
+import { NgzLightboxModule } from 'ngz-lightbox';
+
 @NgModule({
   declarations: [AppComponent, LoginComponent],
   imports: [
@@ -26,7 +28,8 @@ import { QuillModule } from 'ngx-quill';
     ReactiveFormsModule,
     NgZorroAntdModule.forRoot(),
     HttpModule,
-    QuillModule
+    QuillModule,
+    NgzLightboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
