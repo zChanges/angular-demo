@@ -1,11 +1,50 @@
 <nz-layout>
-    <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed">
-        <ul nz-menu style="min-height: 90vh;" [nzMode]="isCollapsed?'vertical':'inline'">
+    <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzBreakpoint]="'lg'">
+        <div class="logo"></div>
+        <ul [nzTheme]="'dark'" nz-menu style="min-height: 90vh;" [nzMode]="isCollapsed?'vertical':'inline'">
             <app-menu [menus]="routList"></app-menu>
         </ul>
     </nz-sider>
 
-    <nz-layout style="margin:0 16px;">
+    <nz-layout>
+            <nz-header>
+                <i class="anticon trigger" [class.anticon-menu-fold]="!isCollapsed" [class.anticon-menu-unfold]="isCollapsed" (click)="isCollapsed=!isCollapsed"></i>
+                <ul class="top-nav">
+                    <li>
+                        <a>
+                            <nz-badge nzDot>
+                                <ng-template #content>
+                                    <i class="anticon anticon-bell"></i>
+                                </ng-template>
+                            </nz-badge>
+                        </a>
+                    </li>
+
+                    <li class="user-list">
+                        <nz-dropdown [nzPlacement]="'bottomRight'">
+                            <a class="ant-dropdown-link" nz-dropdown style="display:inline-block">
+                                <nz-avatar nzIcon="user" style="background-color:#87d068;top:10px;"></nz-avatar>
+                                Admin 
+                            </a>
+                            <ul nz-menu>
+                                <li nz-menu-item nzDisable class="menu-sub">
+                                    <i class="anticon anticon-user"></i>
+                                    <span class="user-title">个人中心</span>
+                                </li>
+                                <li nz-menu-item nzDisable>
+                                    <i class="anticon anticon-setting"></i>
+                                    <span class="user-title">设置</span>
+                                </li>
+                                <li nz-menu-divider></li>
+                                <li nz-menu-item routerLink="/login" >
+                                    <i class="anticon anticon-logout"></i>
+                                    <span class="user-title">退出</span>
+                                </li>
+                            </ul>
+                        </nz-dropdown>
+                    </li>
+                </ul>
+            </nz-header>
             <nz-content style="padding:24px; background: #fff; min-height: 360px;">
                 <router-outlet></router-outlet>
             </nz-content>
