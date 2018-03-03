@@ -1,16 +1,61 @@
-:host ::ng-deep .ant-layout-sider-collapsed .nav-text {
-    display: none;
+:host ::ng-deep .logo {
+    height: 32px;
+    background: #333;
+    border-radius: 6px;
+    margin: 16px;
 }
-  
+
+:host ::ng-deep .ant-layout-sider-collapsed .nav-text {
+  display: none;
+}
+
 :host ::ng-deep .ant-layout-sider-collapsed .ant-menu-submenu-title:after {
-    display: none;
+  display: none;
 }
 
 :host ::ng-deep .ant-layout-sider-collapsed .anticon {
-    margin-left: 8px;
+  font-size: 16px;
+  margin-left: 8px;
 }
 
-:host ::ng-deep .ant-layout-sider-trigger{
-    background: #fff !important;
-    color: #404040 !important;
+.ant-dropdown-menu-item, .ant-dropdown-menu-submenu-title{
+  padding: 7px 60px 7px 8px; 
+  font-size: 14px;
 }
+
+.ant-layout-header{
+  background: #fafbfc;
+  height:50px;
+  line-height:50px;
+  padding: 0px;
+}
+
+:host ::ng-deep .trigger {
+  font-size: 18px;
+  line-height: 50px;
+  padding: 0 16px;
+  cursor: pointer;
+  transition: color .3s;
+}
+
+:host ::ng-deep .trigger:hover {
+  color: #108ee9;
+}
+
+.top-nav{
+  padding: 0 20px;
+  float: right;
+  li{
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0px 10px;
+  }
+  :host ::ng-deep .ant-badge {
+    margin-right: 16px;
+  }
+  .anticon-user, .anticon-bell{
+    font-size: 20px;
+  }
+}
+
+
