@@ -45,7 +45,7 @@ export class UserComponent implements OnInit {
    */
   _refreshStatus() {
     this._loading = true;
-    this.userService.getUser(this.userName, this.mobile, this.role, this._current, this._pageSize).subscribe((res: any) => {
+    this.userService.getUserList(this.userName, this.mobile, this.role, this._current, this._pageSize).subscribe((res) => {
       this._dataSet = res.list;
       this._total = res.total;
       this._loading = false;
