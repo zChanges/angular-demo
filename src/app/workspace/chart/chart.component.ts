@@ -1,3 +1,4 @@
+import { ChartService } from './chart.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChartComponent implements OnInit {
 
-  constructor() { }
+  constructor(private chartService:ChartService) {
+  }
 
   ngOnInit() {
+    
   }
 
 }

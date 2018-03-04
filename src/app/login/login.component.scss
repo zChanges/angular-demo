@@ -13,4 +13,33 @@
     .login-form-button {
         width: 100%;
     }
+    .login-header{
+        font-size: 20px;
+        text-align: center;
+        display: inherit;
+        color: #108ee9;
+        line-height: 40px;
+        width: 300px;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+    .logo-img{
+        height: 44px;
+        vertical-align: top;
+        margin-right: 10px;
+    }
+    .login-foot{
+        display: inherit;
+        text-align: right;
+        span{
+            cursor: pointer;
+            color: #108ee9;
+            font-size: 14px;
+            &:hover{
+                text-decoration:underline;
+            }
+        }
+     
+       
+    }
 }

@@ -3,6 +3,7 @@
 body {
   margin: 0;
   min-height: 100vh;
+  background-color: #f5f7fa!important;
 }
 ul,
 li {
@@ -11,4 +12,37 @@ li {
 
 .active {
   color: #108ee9;
+}
+
+.content__title{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  color: #929292;
+  padding: 12px 24px;
+  margin-right: -24px;
+  margin-left: -24px;
+  margin-bottom: 24px;
+  background-color: #fafbfc;
+  border-bottom: 1px solid #efe3e5;
+  h1{
+    font-size: 18px;
+    font-weight: 400;
+    line-height: inherit;
+    small{
+      display: block;
+      font-size: 12px;
+      color: #a6a6a6;
+    }
+  }
+}
+
+nz-card {
+  margin-bottom: 16px!important;
 }

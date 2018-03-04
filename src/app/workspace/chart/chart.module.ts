@@ -6,6 +6,7 @@ import { ChartRoutes } from './chart.routing';
 import { BarChartsComponent } from './barCharts/barCharts.component';
 import { PieChartComponent } from './pieChart/pieChart.component';
 import { LineChartComponent } from './lineChart/lineChart.component';
+import { ChartService } from './chart.service';
 
 @NgModule({
   imports: [
@@ -13,10 +14,14 @@ import { LineChartComponent } from './lineChart/lineChart.component';
     NgxChartsModule,
     ChartRoutes
   ],
-  declarations: [ChartComponent,
+  declarations: [
+    ChartComponent,
     BarChartsComponent,
     PieChartComponent,
     LineChartComponent
-]
+  ],
+  providers:[
+    ChartService
+  ]
 })
 export class ChartModule { }

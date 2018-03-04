@@ -12,13 +12,11 @@ import { MenuComponent } from './content/menu/menu.component';
 import { WorkspaceRoutes } from './workspace.routing';
 
 
-
-
 @NgModule({
   imports: [
     CommonModule,
     WorkspaceRoutes,
-    NgZorroAntdModule,
+    NgZorroAntdModule.forRoot(),
   ],
   declarations: [
     WorkspaceComponent,

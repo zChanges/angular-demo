@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // commponent
 import { WorkComponent } from './work.component';
@@ -14,6 +14,8 @@ import { WorkCommunicationComponent } from './workCommunication/workCommunicatio
 import { WorkpipePipe } from './workpipe.pipe';
 // serivce
 import { WorkService } from './work.service';
+import { UserService } from './user/user.service';
+
 
 // route
 import { WorkRoutes } from './work.routing';
@@ -21,13 +23,15 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
 
 // 插件
 import { QuillModule } from 'ngx-quill';
+import { UserComponent } from './user/user.component';
 @NgModule({
   imports: [
     CommonModule,
     NgZorroAntdModule.forRoot(),
-    FormsModule,
     QuillModule,
     WorkRoutes,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     WorkComponent,
@@ -36,8 +40,12 @@ import { QuillModule } from 'ngx-quill';
     WorkoneComponent,
     WorkChildComponent,
     WorkCommunicationComponent,
-    WorkpipePipe
+    WorkpipePipe,
+    UserComponent
   ],
-  providers: [WorkService]
+  providers: [
+    WorkService, 
+    UserService
+  ]
 })
 export class WorkModule { }

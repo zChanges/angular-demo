@@ -23,12 +23,29 @@
             </div>
         </div>
         <div nz-form-item>
-            <button nz-button class="login-form-button" [disabled]="!validateForm.valid" [nzType]="'primary'" (click)="login()" [nzSize]="'large'">登陆</button>
+            <div nz-form-control [nzValidateStatus]="validateForm.controls.verifyPassWord">
+            <nz-input formControlName="verifyPassWord" [(ngModel)]="verifyPassWord" [nzType]="'password'" [nzPlaceHolder]="'重复密码'" [nzSize]="'large'">
+                <ng-template #prefix>
+                <i class="anticon anticon-lock"></i>
+                </ng-template>
+            </nz-input>
+            </div>
+        </div>
+        <div nz-form-item>
+            <div nz-form-control [nzValidateStatus]="validateForm.controls.mobile">
+            <nz-input formControlName="mobile" [(ngModel)]="mobile"  [nzPlaceHolder]="'手机号码'" [nzSize]="'large'">
+                <ng-template #prefix>
+                    <i class="anticon anticon-mobile"></i>
+                </ng-template>
+            </nz-input>
+            </div>
+        </div>
+        <div nz-form-item>
+            <button nz-button class="login-form-button" [disabled]="!validateForm.valid" [nzType]="'primary'" (click)="register()" [nzSize]="'large'">注册</button>
         </div>
 
-        <div nz-form-item class="login-foot">
-            <span  routerLink='/register'>注册账户</span>
+        <div class="login-foot">
+            <span routerLink='/login'>使用已登陆账户</span>
         </div>
-        
     </form>
 </div>

@@ -9,7 +9,7 @@ const routes: Routes = [
     path: '',
     component: WorkspaceComponent,
     children: [
-      { path: '', redirectTo: 'chartModule', pathMatch: 'full' },
+      { path: '', redirectTo: 'workModule', pathMatch: 'full' },
       { path: 'workModule', loadChildren: './work/work.module#WorkModule' },
       { path: 'chartModule', loadChildren: './chart/chart.module#ChartModule' },
     ]

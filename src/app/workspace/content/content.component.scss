@@ -23,11 +23,12 @@
   font-size: 14px;
 }
 
-.ant-layout-header{
+:host ::ng-deep .ant-layout-header{
   background: #fafbfc;
   height:50px;
   line-height:50px;
   padding: 0px;
+  border-bottom: 1px solid #efe3e5;
 }
 
 :host ::ng-deep .trigger {
@@ -58,4 +59,9 @@
   }
 }
 
+
+:host ::ng-deep .ant-back-top {
+  right: 23px;
+  bottom: 16px;
+}
 
