@@ -1,0 +1,42 @@
+{
+	"menu": [
+		{
+			"text": "示例",
+			"link": "/workModule",
+			"icon": "anticon-exception",
+			"children": [
+				{
+					"text": "总示例",
+					"link": "/workModule/work"
+				},
+				{
+					"text": "富文本",
+					"link": "/workModule/workEidtor"
+				},
+				{
+					"text": "用户信息",
+					"link": "/workModule/user"
+				}
+			]
+		},
+		{
+			"text": "图表",
+			"link": "/chartModule",
+			"icon": "anticon-area-chart",
+			"children": [
+				{
+					"text": "柱状图",
+					"link": "/chartModule/barChart"
+				},
+				{
+					"text": "饼状图",
+					"link": "/chartModule/pieChart"
+				},
+				{
+					"text": "折线图",
+					"link": "/chartModule/lineChart"
+				}
+			]
+		}
+	]
+}

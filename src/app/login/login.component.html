@@ -1,25 +1,26 @@
 <div class="login">
-    <div class="login-header">
-            <img class="logo-img" src="../../assets/img/logo-color.svg">
-            <span>angular-demo</span>
-    </div>
+
     <form nz-form [formGroup]="validateForm" class="login-form"> 
+            <div class="login-header">
+                    <img class="logo-img" src="../../assets/img/logo-color.svg">
+                    <span>angular-demo</span>
+            </div>
         <div nz-form-item>
-            <div nz-form-control [nzValidateStatus]="validateForm.controls.userName">
-            <nz-input formControlName="userName" [(ngModel)]="userName" [nzPlaceHolder]="'用户名'" [nzSize]="'large'">
-                <ng-template #prefix>
-                <i class="anticon anticon-user"></i>
-                </ng-template>
-            </nz-input>
+            <div nz-form-control [nzValidateStatus]="validateForm.controls.userName" nzHasFeedback >
+                <nz-input formControlName="userName" [(ngModel)]="userName" [nzPlaceHolder]="'用户名'" [nzSize]="'large'">
+                    <ng-template #prefix>
+                    <i class="anticon anticon-user"></i>
+                    </ng-template>
+                </nz-input>
             </div>
         </div>
         <div nz-form-item>
-            <div nz-form-control [nzValidateStatus]="validateForm.controls.passWord">
-            <nz-input formControlName="passWord" [(ngModel)]="passWord" [nzType]="'password'" [nzPlaceHolder]="'密码'" [nzSize]="'large'">
-                <ng-template #prefix>
-                <i class="anticon anticon-lock"></i>
-                </ng-template>
-            </nz-input>
+            <div nz-form-control [nzValidateStatus]="validateForm.controls.passWord" nzHasFeedback >
+                <nz-input formControlName="passWord" [(ngModel)]="passWord" [nzType]="'password'" [nzPlaceHolder]="'密码'" [nzSize]="'large'">
+                    <ng-template #prefix>
+                    <i class="anticon anticon-lock"></i>
+                    </ng-template>
+                </nz-input>
             </div>
         </div>
         <div nz-form-item>

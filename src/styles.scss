@@ -1,7 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import '../node_modules/quill/dist/quill.snow.css';
 body {
-  margin: 0;
+  margin:0;
+  padding:0;
+  width: 100%;
   min-height: 100vh;
   background-color: #f5f7fa!important;
 }
@@ -45,4 +47,13 @@ li {
 
 nz-card {
   margin-bottom: 16px!important;
+}
+
+
+.sales-extra {
+  display: inline-block;
+  margin-right: 24px;
+  a {
+      margin-left: 24px;
+  }
 }

@@ -3,16 +3,16 @@ import { HttpClient } from '@angular/common/http';
 import { RouterService } from './../router.service';
 @Injectable()
 export class RegisterService {
-
     baseUrl: string;
     constructor(private http: HttpClient, private routerService: RouterService) {
         this.baseUrl = this.routerService.baseUrl;
     }
 
-    createUser(userName, password, mobile) {
+    createUser(userName, password,verifyPassWord, mobile) {
         return this.http.post(this.baseUrl + 'user', {
             userName: userName,
             password: password,
+            verifyPassWord:verifyPassWord,
             mobile: mobile,
         });
     }

@@ -1,13 +1,45 @@
-<div style="height:500px;">
-    <ngx-charts-pie-chart
-    [scheme]="colorScheme"
-    [results]="single"
-    [legend]="showLegend"
-    [explodeSlices]="explodeSlices"
-    [labels]="showLabels"
-    [doughnut]="doughnut"
-    [gradient]="gradient"
-    (select)="onSelect($event)">
-    </ngx-charts-pie-chart>
-</div>
+<nc-title title="Chart" small='饼状图示例'></nc-title>
 
+<nz-card [nzLoading]="loading" [nzBordered]="false" nzNoPadding class="sales-card">
+    <ng-template #body>
+        <nz-tabset>
+            <nz-tab>
+                <ng-template #nzTabHeading>饼状图</ng-template>
+                <div nz-row>
+                    <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="12">
+                        <v-chart  forceFit="true"  height="300" [data]="data" [scale]="scale">
+                            <v-tooltip></v-tooltip>
+                            <v-axis></v-axis>
+                            <v-coord type="theta"></v-coord>
+                            <v-pie position="percent" color="item" [style]="pieStyle" [label]="labelConfig"></v-pie>
+                            <v-legend dataKey="item"></v-legend>
+                          </v-chart>
+                    </div>
+
+                    <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="12">
+                        <v-chart forceFit="true" height="300" [data]="data" [scale]="scale">
+                            <v-tooltip></v-tooltip>
+                            <v-axis></v-axis>
+                            <v-pie position="percent" color="item" [style]="pieStyle" [label]="labelConfig"></v-pie>
+                            <v-coord type="theta"  [radius]="0.75" [innerRadius]="0.6"></v-coord>
+                            <v-legend dataKey="item"></v-legend>
+                          </v-chart>
+                    </div>
+
+                </div>
+            </nz-tab>
+            <ng-template #nzTabBarExtraContent>
+                <div class="sales-extra-wrap">
+                    <div class="sales-extra">
+                        <a (click)="setDate('today')">今日</a>
+                        <a (click)="setDate('week')">本周</a>
+                        <a (click)="setDate('month')">本月</a>
+                        <a (click)="setDate('year')">全年</a>
+                    </div>
+                    <nz-datepicker style="width:120px" class="mr-md" [(ngModel)]="startTime" [nzFormat]="'YYYY-MM-DD'" [nzPlaceHolder]="'开始日期'"></nz-datepicker>
+                    <nz-datepicker style="width:120px" [nzFormat]="'YYYY-MM-DD'" [(ngModel)]="endTiem" [nzPlaceHolder]="'结束日期'"></nz-datepicker>
+                </div>
+            </ng-template>
+        </nz-tabset>
+    </ng-template>
+</nz-card>

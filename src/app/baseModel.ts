@@ -1,7 +1,7 @@
 /**
  * 列表基础接口
  */
-export interface ListResponse<T> {
+interface ListResponse<T> extends BaseResponse {
   count:number;
   currentPage:number;
   list: Array<T>;
@@ -9,14 +9,14 @@ export interface ListResponse<T> {
   total: number;
 }
 
-export interface BaseResponse {
+interface BaseResponse {
   extData: any;
 }
 
 /**
  * 接口基础输出
  */
-export interface IResponse<T> {
+interface IResponse<T>  {
   code: number;
   success: boolean;
   result: T;

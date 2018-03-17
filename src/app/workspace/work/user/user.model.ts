@@ -1,4 +1,3 @@
-import { ListResponse } from '../../../baseModel';
 import { Observable } from "rxjs/Observable";
 export interface UserListItemResponse {
     /**
@@ -38,4 +37,19 @@ export interface IUserService {
      * @param pageSize 一页多少条
      */
     getUserList(userName: string, mobile: string, role: string, currentPage: number, pageSize: number): Observable<ListResponse<UserListItemResponse>>
+
+
+    /**
+     * 删除用户
+     * @param id 主键(可删除多个用‘,’隔开)
+     */
+    removeUsers(id: string): Observable<BaseResponse>;
+
+    /**
+     * 更新用户信息
+     * @param id 主键
+     * @param userName 用户名
+     * @param mobile 手机号
+     */
+    updateUser(id: string, userName: string, mobile: string): Observable<BaseResponse>
 }

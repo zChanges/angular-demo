@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -24,12 +24,22 @@ import { RegisterService } from './register/register.service';
 // 拦截器
 import { InterceptorService } from './interceptor.service';
 
+import { ViserModule } from 'viser-ng';
+import { StartupService } from './core/startup.service';
+
+import { ReuseTabService } from '@delon/abc/reuse-tab';
+
+
+export function StartupServiceFactory(startupService: StartupService): Function {
+  return () => startupService.load();
+}
 
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, RegisterComponent],
   imports: [
     BrowserModule,
+    ViserModule,
     RouterRoutes,
     BrowserAnimationsModule,
     FormsModule,
@@ -42,13 +52,21 @@ import { InterceptorService } from './interceptor.service';
     RouterService,
     LoginService,
     RegisterService,
+    ReuseTabService,
     [
       {
         provide: HTTP_INTERCEPTORS,
         useClass: InterceptorService,
         multi: true
       }
-    ]
+    ],
+    StartupService,
+    {
+        provide: APP_INITIALIZER,
+        useFactory: StartupServiceFactory,
+        deps: [StartupService],
+        multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

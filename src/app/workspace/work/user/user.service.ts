@@ -5,7 +5,6 @@ import { RouterService } from './../../../router.service';
 // model
 import { Observable } from "rxjs/Observable";
 import { UserListItemResponse, IUserService } from './user.model';
-import { ListResponse } from '../../../baseModel';
 
 
 
@@ -16,17 +15,18 @@ export class UserService implements IUserService {
         this._baseUrl = this._routServe.baseUrl;
     }
 
+    
     getUserList(userName, mobile, role, currentPage, pageSize){
         return this.http.get<ListResponse<UserListItemResponse>>(`${this._baseUrl}user?userName=${userName}&mobile=${mobile}&role=${role}&currentPage=${currentPage}&pageSize=${pageSize}`);
     }
 
     removeUsers(id) {
-        return this.http.delete(`${this._baseUrl}user?id=${id}`);
+        return this.http.delete<BaseResponse>(`${this._baseUrl}user?id=${id}`);
     }
 
 
     updateUser(id, userName, mobile) {
-        return this.http.put(`${this._baseUrl}user/${id}`, {
+        return this.http.put<BaseResponse>(`${this._baseUrl}user/${id}`, {
             userName: userName,
             mobile: mobile
         })

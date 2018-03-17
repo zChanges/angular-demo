@@ -8,3 +8,8 @@ declare module "*.json" {
   const value: any;
   export default value;
 }
+
+// echarts
+declare var echarts: any;
+
+

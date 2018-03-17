@@ -65,7 +65,7 @@ export class UserComponent implements OnInit {
       onOk: () => {
         this.userService.removeUsers(data._id).subscribe(res => {
           modal.destroy();
-          this._refreshStatus();
+           this._refreshStatus();
         })
       }
     });

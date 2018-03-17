@@ -1,16 +1,45 @@
-<div style="height:500px;">
-        <ngx-charts-line-chart
-        [scheme]="colorScheme"
-        [results]="multi"
-        [gradient]="gradient"
-        [xAxis]="showXAxis"
-        [yAxis]="showYAxis"
-        [legend]="showLegend"
-        [showXAxisLabel]="showXAxisLabel"
-        [showYAxisLabel]="showYAxisLabel"
-        [xAxisLabel]="xAxisLabel"
-        [yAxisLabel]="yAxisLabel"
-        [autoScale]="autoScale"
-        (select)="onSelect($event)">
-        </ngx-charts-line-chart>
-</div>
+<nc-title title="Chart" small='折线图示例'></nc-title>
+
+<nz-card [nzLoading]="loading" [nzBordered]="false" nzNoPadding class="sales-card">
+	<ng-template #body>
+		<nz-tabset>
+			<nz-tab>
+				<ng-template #nzTabHeading>访问量</ng-template>
+				<div nz-row>
+					<div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="12">
+						<v-chart forceFit="true" height="300" [data]="data" [scale]="scale1">
+							<v-tooltip></v-tooltip>
+							<v-axis></v-axis>
+							<v-legend></v-legend>
+							<v-smooth-line position="month*temperature" color="city" shape="smooth"></v-smooth-line>
+							<v-point position="month*temperature" color="city" shape="circle"></v-point>
+						</v-chart>
+					</div>
+
+					<div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="12">
+						<!-- <v-chart forceFit="true" height="300" [data]="data" [scale]="scale1">
+                                                        <v-tooltip></v-tooltip>
+                                                        <v-axis></v-axis>
+                                                        <v-legend></v-legend>
+                                                        <v-line position="month*temperature" color="city" shape="smooth"></v-line>
+                                                        <v-point position="month*temperature" color="city" shape="circle"></v-point>
+                                                </v-chart> -->
+					</div>
+
+				</div>
+			</nz-tab>
+			<ng-template #nzTabBarExtraContent>
+				<div class="sales-extra-wrap">
+					<div class="sales-extra">
+						<a (click)="setDate('today')">今日</a>
+						<a (click)="setDate('week')">本周</a>
+						<a (click)="setDate('month')">本月</a>
+						<a (click)="setDate('year')">全年</a>
+					</div>
+					<nz-datepicker style="width:120px" class="mr-md" [(ngModel)]="startTime" [nzFormat]="'YYYY-MM-DD'" [nzPlaceHolder]="'开始日期'"></nz-datepicker>
+					<nz-datepicker style="width:120px" [nzFormat]="'YYYY-MM-DD'" [(ngModel)]="endTiem" [nzPlaceHolder]="'结束日期'"></nz-datepicker>
+				</div>
+			</ng-template>
+		</nz-tabset>
+	</ng-template>
+</nz-card>

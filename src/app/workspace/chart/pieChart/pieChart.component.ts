@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {single, multi} from '../data';
+import { single, multi } from '../data';
+import { getTimeDistance } from '@delon/abc/utils';
+import { DataSet } from "@antv/data-set";
+
 @Component({
   selector: 'app-pieChart',
   templateUrl: './pieChart.component.html',
@@ -7,33 +10,55 @@ import {single, multi} from '../data';
 })
 export class PieChartComponent implements OnInit {
 
-  single: any[];
-  multi: any[];
 
-  view: any[] = [700, 400];
+  search = {
+    startTime:null,
+    endTiem:null
+  }
 
-  // options
-  showLegend = true;
-
-  colorScheme = {
-    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+  data
+  sourceData = [
+    { item: '事例一', count: 40 },
+    { item: '事例二', count: 21 },
+    { item: '事例三', count: 17 },
+    { item: '事例四', count: 13 },
+    { item: '事例五', count: 9 }
+  ];
+  dv = new DataSet.View().source(this.sourceData);
+  scale = [{
+    dataKey: 'percent',
+    min: 0,
+    formatter: '.0%',
+  }];
+  pieStyle = {
+    stroke: "#fff",
+    lineWidth: 1
   };
-
-  // pie
-  showLabels = true;
-  explodeSlices = false;
-  doughnut = false;
-
+  labelConfig = ['percent', {
+    formatter: (val, item) => {
+      return item.point.item + ': ' + val;
+    },
+  }];
   constructor() {
-    Object.assign(this, {single, multi})   
+    this.dv.transform({
+      type: 'percent',
+      field: 'count',
+      dimension: 'item',
+      as: 'percent'
+    });
+    this.data = this.dv.rows
+
+    
   }
-  
-  onSelect(event) {
-    console.log(event);
-  }
+
   
 
   ngOnInit() {
   }
 
+  setDate(type: any) {
+    const rank = getTimeDistance(type);
+    this.search.startTime = rank[0];
+    this.search.endTiem = rank[1];
+  }
 }
